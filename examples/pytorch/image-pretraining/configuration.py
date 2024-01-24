@@ -1,4 +1,15 @@
+import torch
 from transformers import SwinConfig
+
+if torch.cuda.is_available():
+  device = 0
+  torch_device = torch.device('cuda')
+else:
+  device = -1
+  torch_device = torch.device('cpu')
+
+print(f'Using device: {device}')
+
 
 IMAGE_SIZE = 192
 PATCH_SIZE = 4
